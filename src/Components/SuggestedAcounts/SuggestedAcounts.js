@@ -10,7 +10,6 @@ function SuggestAcounts({ label }) {
     const initPage = 1;
     const initPerPage = 5;
     const [listResult, setListResult] = useState([]);
-    const [isMore, setIsMore] = useState(true);
     const [page, setPage] = useState(initPage);
 
     useEffect(() => {
@@ -43,7 +42,7 @@ function SuggestAcounts({ label }) {
                     setPage(page + 1);
                 }}
             >
-                {isMore ? 'See all' : 'See less'}
+                See all
             </p>
         </div>
     );
