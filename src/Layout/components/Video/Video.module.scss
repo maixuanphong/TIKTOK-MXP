@@ -63,9 +63,6 @@
     }
 }
 
-.follows {
-}
-
 // content
 
 .content {
@@ -121,6 +118,10 @@
     align-items: center;
     margin-top: 10px;
     cursor: pointer;
+}
+
+.isActive {
+    background-color: var(--primary-color);
 }
 
 .icon {

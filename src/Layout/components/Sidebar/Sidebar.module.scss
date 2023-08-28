@@ -27,3 +27,33 @@
     padding-top: 14px;
     padding-bottom: 14px;
 }
+
+// mobile
+@media (max-width: 739px) {
+    .login {
+        display: none;
+    }
+
+    .wrapper {
+        max-width: 70px;
+        height: 100vh;
+        border-right: 1px solid #e3e3e4;
+    }
+}
+
+//tablet
+@media (min-width: 740px) and (max-width: 1023px) {
+    .login {
+        display: none;
+    }
+
+    .wrapper {
+        max-width: 70px;
+        height: 100vh;
+        border-right: 1px solid #e3e3e4;
+    }
+}
+
+//pc
+@media (min-width: 1024px) {
+}

@@ -593,8 +593,9 @@ export const QrIcon = ({ width = '2rem', height = '2rem', className }) => (
 
 export const GoogleIcon = ({ width = '2rem', height = '2rem', className }) => (
     <svg
-        width="2rem"
-        height="2rem"
+        width={width}
+        height={height}
+        className={className}
         viewBox="0 0 48 48"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -628,8 +629,9 @@ export const GoogleIcon = ({ width = '2rem', height = '2rem', className }) => (
 
 export const UserIcon = ({ width = '9rem', height = '9rem', className }) => (
     <svg
-        width="2rem"
-        height="2rem"
+        width={width}
+        height={height}
+        className={className}
         viewBox="0 0 48 48"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -638,6 +640,27 @@ export const UserIcon = ({ width = '9rem', height = '9rem', className }) => (
             fillRule="evenodd"
             clipRule="evenodd"
             d="M24.0003 7C20.1343 7 17.0003 10.134 17.0003 14C17.0003 17.866 20.1343 21 24.0003 21C27.8663 21 31.0003 17.866 31.0003 14C31.0003 10.134 27.8663 7 24.0003 7ZM13.0003 14C13.0003 7.92487 17.9252 3 24.0003 3C30.0755 3 35.0003 7.92487 35.0003 14C35.0003 20.0751 30.0755 25 24.0003 25C17.9252 25 13.0003 20.0751 13.0003 14ZM24.0003 33C18.0615 33 13.0493 36.9841 11.4972 42.4262C11.3457 42.9573 10.8217 43.3088 10.2804 43.1989L8.32038 42.8011C7.77914 42.6912 7.4266 42.1618 7.5683 41.628C9.49821 34.358 16.1215 29 24.0003 29C31.8792 29 38.5025 34.358 40.4324 41.628C40.5741 42.1618 40.2215 42.6912 39.6803 42.8011L37.7203 43.1989C37.179 43.3088 36.6549 42.9573 36.5035 42.4262C34.9514 36.9841 29.9391 33 24.0003 33Z"
+        ></path>
+    </svg>
+);
+
+export const PrevIcon = ({
+    width = '3.4rem',
+    height = '3.4rem',
+    className,
+}) => (
+    <svg
+        width={width}
+        height={height}
+        className={className}
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M4.58579 22.5858L20.8787 6.29289C21.2692 5.90237 21.9024 5.90237 22.2929 6.29289L23.7071 7.70711C24.0976 8.09763 24.0976 8.7308 23.7071 9.12132L8.82843 24L23.7071 38.8787C24.0976 39.2692 24.0976 39.9024 23.7071 40.2929L22.2929 41.7071C21.9024 42.0976 21.2692 42.0976 20.8787 41.7071L4.58579 25.4142C3.80474 24.6332 3.80474 23.3668 4.58579 22.5858Z"
         ></path>
     </svg>
 );

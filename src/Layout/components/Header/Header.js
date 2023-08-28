@@ -206,6 +206,7 @@ const MENU_ITEMS = [
 function Header() {
     // user
     const currentUser = false;
+
     // islogin
     const [isLogin, setIsLogin] = useState(false);
 
@@ -221,6 +222,11 @@ function Header() {
                 break;
             default:
         }
+    };
+
+    // handleLogin
+    const handleLogin = () => {
+        setIsLogin(!isLogin);
     };
 
     const userMenu = [
@@ -300,7 +306,7 @@ function Header() {
                     </Link>
                 </div>
                 {/* search */}
-                <Search></Search>
+                <Search className={cx('header-search')}></Search>
 
                 <div className={cx('action')}>
                     {currentUser ? (
@@ -352,9 +358,7 @@ function Header() {
                                 primary
                                 to="/"
                                 href="/"
-                                onClick={() => {
-                                    setIsLogin(true);
-                                }}
+                                onClick={handleLogin}
                                 ref={loginRef}
                             >
                                 Log in
@@ -383,7 +387,13 @@ function Header() {
                     </Menu>
                 </div>
             </div>
-            {isLogin && <Login isLogin={isLogin} loginRef={loginRef}></Login>}
+            {isLogin && (
+                <Login
+                    isLogin={isLogin}
+                    loginRef={loginRef}
+                    onLogin={handleLogin}
+                ></Login>
+            )}
         </header>
     );
 }

@@ -24,7 +24,9 @@
 }
 
 .logo {
-    min-width: 257px;
+    flex: 1;
+    min-width: 150px;
+    max-width: 257px;
 }
 
 // action
@@ -91,4 +93,18 @@
     margin-left: 12px;
     cursor: pointer;
     overflow: hidden;
+}
+
+// responsive
+
+// mobile
+@media (max-width: 739px) {
+}
+
+//tablet
+@media (min-width: 740px) and (max-width: 1023px) {
+}
+
+//pc
+@media (min-width: 1024px) {
 }

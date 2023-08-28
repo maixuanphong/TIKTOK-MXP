@@ -14,9 +14,11 @@ import {
     CoppyIcon,
 } from '~/Components/icon';
 import { Wrapper } from '~/Components/Popper';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 function Header({ user }) {
+    const [isErrorImg, setIsErrorImg] = useState(false);
     const renderShare = (attrs) => {
         return (
             <div tabIndex="-1" {...attrs}>
@@ -57,7 +59,19 @@ function Header({ user }) {
         <div className={cx('wrapper')}>
             <div className={cx('infor-wrap')}>
                 <div className={cx('infor')}>
-                    <img className={cx('avata')} src={user.avatar} alt="" />
+                    {isErrorImg ? (
+                        <img
+                            className={cx('avata')}
+                            src="https://anhdep123.com/wp-content/uploads/2020/11/avatar-facebook-mac-dinh-nam.jpeg"
+                        />
+                    ) : (
+                        <img
+                            className={cx('avata')}
+                            src={user.avatar}
+                            alt=""
+                            onError={() => setIsErrorImg(true)}
+                        />
+                    )}
 
                     <div className={cx('infor-other')}>
                         <div className={cx('nick-name-wrapper')}>

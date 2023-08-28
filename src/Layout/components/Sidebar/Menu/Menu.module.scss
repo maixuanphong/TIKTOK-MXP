@@ -31,3 +31,21 @@
 .active-icon {
     display: none;
 }
+
+// mobile
+@media (max-width: 739px) {
+    .title {
+        display: none;
+    }
+}
+
+//tablet
+@media (min-width: 740px) and (max-width: 1023px) {
+    .title {
+        display: none;
+    }
+}
+
+//pc
+@media (min-width: 1024px) {
+}

@@ -3,6 +3,20 @@
     width: 500px;
     height: 560px;
     border-radius: 12px;
+    z-index: 1000;
+    animation: ShowLogin linear 0.2s;
+    z-index: 1000;
+}
+
+@keyframes ShowLogin {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .header {
@@ -10,7 +24,14 @@
     flex-direction: column;
 }
 
-.icon-wrap {
+.header-icon-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-close-wrap {
+    float: right;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,9 +42,31 @@
     border-radius: 50%;
     margin-top: 10px;
     margin-right: 10px;
+    margin-left: 10px;
     &:hover {
         opacity: 0.6;
         cursor: pointer;
+    }
+}
+
+.icon-prev-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin-left: 10px;
+    margin-top: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon-prev {
+    width: 26px;
+    height: 26px;
+    &:hover {
+        opacity: 0.7;
     }
 }
 
@@ -94,4 +137,40 @@
         text-decoration: underline;
         cursor: pointer;
     }
+}
+
+// css when have login qr
+.Login-qr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 83px;
+}
+
+.qr-help {
+    display: flex;
+    flex-direction: column;
+}
+
+.img-qr {
+    width: 180px;
+    height: 180px;
+}
+
+.help {
+    margin-top: 16px;
+}
+
+.help-step {
+    margin-top: 6px;
+    font-size: 1.4rem;
+    color: #161823bf;
+}
+
+.preview-help {
+}
+
+.preview-help-img {
+    width: 200px;
+    height: 256px;
 }

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { CommentsIcon, FavoriteIcon, ShareIcon } from '~/Components/icon';
 import Header from './header';
 import Video from './Video';
+import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 function Content({ data }) {

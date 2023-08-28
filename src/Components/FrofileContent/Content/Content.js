@@ -5,6 +5,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { LockIcon } from '~/Components/icon';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 function Content({ user }) {
     const [isActive1, setIsActive1] = useState(true);
@@ -69,7 +70,11 @@ function Content({ user }) {
                     <div>
                         {user.videos?.map((video, index) => {
                             return (
-                                <div className={cx('video-wrapper')}>
+                                <Link
+                                    to={`/video/${user.nickname}/${video.id}`}
+                                    className={cx('video-wrapper')}
+                                    key={index}
+                                >
                                     <video
                                         className={cx('video')}
                                         src={video.file_url}
@@ -84,7 +89,7 @@ function Content({ user }) {
                                         {' '}
                                         {video.description}
                                     </p>
-                                </div>
+                                </Link>
                             );
                         })}
                     </div>
@@ -95,7 +100,7 @@ function Content({ user }) {
                             This user's liked videos are private
                         </h2>
                         <p className={cx('video-private-title')}>
-                            Videos liked by xucana are currently hidden
+                            Videos liked by {user.nickname} are currently hidden
                         </p>
                     </div>
                 )}

@@ -64,3 +64,23 @@
     padding: 8px 0px 0px 0px;
     cursor: pointer;
 }
+
+// mobile
+@media (max-width: 739px) {
+    .item-infor,
+    .label {
+        display: none;
+    }
+}
+
+//tablet
+@media (min-width: 740px) and (max-width: 1023px) {
+    .item-infor,
+    .label {
+        display: none;
+    }
+}
+
+//pc
+@media (min-width: 1024px) {
+}

@@ -4,6 +4,7 @@ import Profile from '~/Pages/Profile';
 import Upload from '~/Pages/Upload';
 import Search from '~/Pages/Search';
 import Live from '~/Pages/Live';
+import Video from '~/Pages/Video/Video';
 //routerConfig
 import config from '~/config';
 
@@ -18,6 +19,7 @@ const publicRoutes = [
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },
     { path: config.routes.search, component: Search, layout: null },
     { path: config.routes.live, component: Live },
+    { path: config.routes.video, component: Video, layout: null },
 ];
 
 // private
