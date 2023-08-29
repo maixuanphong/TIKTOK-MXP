@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import styles from './Infor.module.scss';
 import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,20 +16,23 @@ import {
 } from '~/Components/icon';
 const cx = classNames.bind(styles);
 
-function Infor() {
+function Infor({ video }) {
+    console.log(video.user?.id);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('infor-head')}>
                 <div className={cx('avata-wrap')}>
                     <Image
                         className={cx('avata')}
-                        src="https://files.fullstack.edu.vn/f8-tiktok/users/4854/646231eb7a517.png"
+                        src={video?.user?.avatar}
                         alt=""
                     ></Image>
                 </div>
                 <div className={cx('name')}>
-                    <p className={cx('nick-name')}>maiphonf24234</p>
-                    <p className={cx('full-name')}>mai xuân phong</p>
+                    <p className={cx('nick-name')}>{video?.user?.nickname}</p>
+                    <p
+                        className={cx('full-name')}
+                    >{`${video?.user?.first_name} ${video?.user?.last_name}`}</p>
                 </div>
                 <Button className={cx('btn-follow')} outline small>
                     Follow
@@ -36,14 +40,14 @@ function Infor() {
             </div>
             <div className={cx('infor-body')}>
                 <a href="" className={cx('link')}>
-                    kdfjaklsfjaklsdfjaslf
+                    {video?.thumb_url}
                 </a>
                 <div className={cx('music-wrap')}>
                     <FontAwesomeIcon
                         className={cx('icon-music')}
                         icon={faMusic}
                     ></FontAwesomeIcon>
-                    <p className={cx('music')}>Người hãy quên anh đi</p>
+                    <p className={cx('music')}>{video?.music}</p>
                 </div>
                 <div className={cx('favorite-comment-share')}>
                     <div className={cx('favorite-comment')}>
@@ -53,7 +57,9 @@ function Infor() {
                                     className={cx('favorite-icon')}
                                 ></FavoriteIcon>
                             </div>
-                            <p className={cx('quantity')}>12</p>
+                            <p className={cx('quantity')}>
+                                {video?.likes_count}
+                            </p>
                         </div>
                         <div className={cx('comment-wrap')}>
                             <div className={cx('icon-wrap')}>
@@ -62,7 +68,9 @@ function Infor() {
                                 ></CommentsIcon>
                             </div>
 
-                            <p className={cx('quantity')}>12</p>
+                            <p className={cx('quantity')}>
+                                {video?.comments_count}
+                            </p>
                         </div>
                     </div>
                     <div className={cx('share')}>
@@ -88,5 +96,9 @@ function Infor() {
         </div>
     );
 }
+
+Infor.propTypes = {
+    video: PropTypes.object.isRequired,
+};
 
 export default Infor;

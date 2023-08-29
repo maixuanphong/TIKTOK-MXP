@@ -1,3 +1,17 @@
 .wrapper {
     padding: 36px 0;
 }
+
+//mobile
+@media (max-width: 739px) {
+    .wrapper {
+        margin-left: 100px;
+    }
+}
+
+//tablet
+@media (min-width: 740px) and (max-width: 1023px) {
+    .wrapper {
+        margin-left: 100px;
+    }
+}
