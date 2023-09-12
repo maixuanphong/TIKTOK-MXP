@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
 import Button from '~/Components/Button/button';
+import Login from '~/Components/Login/Login';
 import {
     ShareProfileIcon,
     MoreIcon,
@@ -14,11 +16,14 @@ import {
     CoppyIcon,
 } from '~/Components/icon';
 import { Wrapper } from '~/Components/Popper';
-import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 function Header({ user }) {
     const [isErrorImg, setIsErrorImg] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
+    const handleLogin = () => {
+        setIsLogin(!isLogin);
+    };
     const renderShare = (attrs) => {
         return (
             <div tabIndex="-1" {...attrs}>
@@ -89,7 +94,12 @@ function Header({ user }) {
                         <p
                             className={cx('full-name')}
                         >{`${user.first_name} ${user.last_name}`}</p>
-                        <Button className={cx('follow-btn')} primary large>
+                        <Button
+                            className={cx('follow-btn')}
+                            onClick={handleLogin}
+                            primary
+                            large
+                        >
                             Follow
                         </Button>
                     </div>
@@ -137,6 +147,7 @@ function Header({ user }) {
                     <MoreIcon></MoreIcon>
                 </div>
             </div>
+            {isLogin ? <Login onLogin={handleLogin}></Login> : ''}
         </div>
     );
 }

@@ -1,0 +1,69 @@
+.wrapper {
+    padding-top: 20px;
+    margin-top: 20;
+    display: flex;
+    justify-content: space-between;
+}
+
+.avata-wrap {
+}
+
+.avata {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.infor {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.name {
+    font-size: 1.8rem;
+    color: #161823;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.comment {
+    font-size: 1.6rem;
+    color: #161823;
+    margin-bottom: 8px;
+}
+
+.time-reply {
+    display: flex;
+}
+
+.time {
+    margin-right: 30px;
+    font-size: 1.4rem;
+    color: #16182380;
+}
+
+.reply {
+    font-size: 1.4rem;
+    color: #16182380;
+}
+
+.like {
+}
+
+.like-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.like-icon {
+    color: #16182380;
+}
+
+.like-quantity {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #16182380;
+}

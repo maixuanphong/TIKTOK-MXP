@@ -13,7 +13,7 @@ import {
     PrevIcon,
 } from '../icon';
 const cx = classNames.bind(styles);
-
+const hehe = true;
 function Login({ onLogin }) {
     const [loginQr, setLoginQr] = useState(false);
     if (onLogin) {

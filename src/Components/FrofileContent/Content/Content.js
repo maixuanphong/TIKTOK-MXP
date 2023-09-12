@@ -12,6 +12,8 @@ function Content({ user }) {
     const [isActive2, setIsActive2] = useState(false);
     const [isLock1, setIsLock1] = useState(false);
     const [isLock2, setIsLock2] = useState(true);
+
+    localStorage.setItem('previousUrlProfile', document.URL);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('header')}>
@@ -80,6 +82,7 @@ function Content({ user }) {
                                         src={video.file_url}
                                         onMouseEnter={(e) => {
                                             e.target.play();
+                                            e.target.volume = 0;
                                         }}
                                         onMouseOut={(e) => {
                                             e.target.pause();

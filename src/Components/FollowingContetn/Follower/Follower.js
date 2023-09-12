@@ -14,6 +14,7 @@ function Follower({ user }) {
             className={cx('wrapper')}
             onMouseEnter={() => {
                 videoRef.current.play();
+                videoRef.current.volume = 0;
             }}
             onMouseLeave={() => {
                 videoRef.current.pause();

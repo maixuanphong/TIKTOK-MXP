@@ -1,61 +1,38 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import styles from './VideoComment.module.scss';
+import styles from './VideoCommentHome.module.scss';
 import Infor from './Infor/Infor';
 import Comment from './Comment/Comment';
-import * as UserService from '~/services/userService';
+import * as VideoServices from '~/services/VideoServices';
 import { CloseIcon, DownIcon, UpIcon } from '../icon';
 const cx = classNames.bind(styles);
 function VideoComment() {
-    const currentVideo = {};
-    const handleNext = useRef();
-    const handlePrev = useRef();
     const [video, setVideo] = useState({});
     const params = useParams();
-    const [videoId, setVideoId] = useState(params.id);
-    console.log(params);
-
+    const [listVideo, setListVideo] = useState([]);
+    const [page, setPage] = useState(1);
     useEffect(() => {
         const fetchApi = async () => {
-            const response = await UserService.getUserInfor(
-                `@${params.nickname}`,
-            );
-
-            console.log(response.videos.length);
-            const videoUser = response.videos.find((video, index) => {
-                currentVideo.index = index;
-                return video?.id == videoId;
-            });
-            setVideo(videoUser);
-
-            // handle next
-            const handleNextVideo = () => {
-                if (currentVideo.index < response.videos.length - 1) {
-                    currentVideo.index++;
-                } else {
-                    currentVideo.index = response.videos.length - 1;
-                }
-                setVideo(response.videos[currentVideo.index]);
-            };
-            handleNext.current = handleNextVideo;
-
-            //handle prev
-            const handlePrevVideo = () => {
-                if (currentVideo.index > 0) {
-                    currentVideo.index--;
-                } else {
-                    currentVideo.index = 0;
-                }
-
-                setVideo(response.videos[currentVideo.index]);
-            };
-            handlePrev.current = handlePrevVideo;
+            const res = await VideoServices.getVideos('for-you', page);
+            setListVideo((preRes) => [...preRes, ...res]);
         };
         fetchApi();
-    }, [videoId]);
-    console.log(video);
-    console.log(params.id);
+
+        const currentVideo = listVideo.find((video) => {
+            return video?.id == params.id;
+        });
+
+        setVideo(currentVideo);
+    }, [page, params.id, listVideo]);
+
+    // handle when scroll the end
+    window.addEventListener('scroll', function () {
+        // Kiểm tra nếu con trỏ cuộn đến cuối trang
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            setPage((prePage) => prePage + 1);
+        }
+    });
 
     return (
         <div>
@@ -81,14 +58,14 @@ function VideoComment() {
                         <div className={cx('next-prev-video')}>
                             <div
                                 className={cx('prev-video')}
-                                onClick={handlePrev.current}
+                                // onClick={handlePrev.current}
                             >
                                 <UpIcon className={cx('prev-icon')}></UpIcon>
                             </div>
 
                             <div
                                 className={cx('next-video')}
-                                onClick={handleNext.current}
+                                // onClick={handleNext.current}
                             >
                                 <DownIcon
                                     className={cx('next-icon')}
@@ -106,4 +83,4 @@ function VideoComment() {
     );
 }
 
-export default VideoComment;
+export default memo(VideoComment);

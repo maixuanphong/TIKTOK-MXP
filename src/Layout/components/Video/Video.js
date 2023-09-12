@@ -7,6 +7,7 @@ import styles from './Video.module.scss';
 //     VolumnIcon,
 // } from '~/Components/icon';
 import { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 const Video = ({ data }) => {
@@ -39,6 +40,7 @@ const Video = ({ data }) => {
         };
     }, []);
 
+    console.log(data);
     useEffect(() => {
         const video = videoRef.current;
 
@@ -52,21 +54,25 @@ const Video = ({ data }) => {
         }
     }, [isInViewport]);
 
+    localStorage.setItem('previousUrlHome', document.URL);
+
     return (
         <div className={cx('video-wrapper')}>
-            <video
-                className={cx('video')}
-                src={data.file_url}
-                ref={videoRef}
-                // onPause={() => {
-                //     setIsPlay(false);
-                // }}
-                // onPlay={() => {
-                //     setIsPlay(true);
-                // }}
+            <Link to={`video/${data.user.nickname}/${data.id}`}>
+                <video
+                    className={cx('video')}
+                    src={data.file_url}
+                    ref={videoRef}
+                    // onPause={() => {
+                    //     setIsPlay(false);
+                    // }}
+                    // onPlay={() => {
+                    //     setIsPlay(true);
+                    // }}
 
-                controls
-            ></video>
+                    controls
+                ></video>
+            </Link>
             {/* <div
                 className={cx('icon-play-pause')}
                 ref={playPauseRef}
